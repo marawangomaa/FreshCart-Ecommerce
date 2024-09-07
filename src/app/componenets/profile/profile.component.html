@@ -1,24 +1,26 @@
 <section>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th class="bg-info-subtle">Name :</th>
-                <th class="bg-info-subtle">Details :</th>
-                <th class="bg-info-subtle">Phone :</th>
-                <th class="bg-info-subtle">City :</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (address of addressData; track address._id) {
+    @if (addressData.length != 0) {
+        <table class="table table-bordered">
+            <thead>
                 <tr>
-                    <td>{{address.name}}</td>
-                    <td>{{address.details}}</td>
-                    <td>{{address.phone}}</td>
-                    <td>{{address.city}}</td>
+                    <th class="bg-info-subtle">Name :</th>
+                    <th class="bg-info-subtle">Details :</th>
+                    <th class="bg-info-subtle">Phone :</th>
+                    <th class="bg-info-subtle">City :</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @for (address of addressData; track address._id) {
+                    <tr>
+                        <td>{{address.name}}</td>
+                        <td>{{address.details}}</td>
+                        <td>{{address.phone}}</td>
+                        <td class="d-flex justify-content-between">{{address.city}} <button (click)="removeAddress(address._id)" class="text-danger btn"><i class="fa-solid fa-trash-can"></i></button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
 
 
     <form class="bg-main-light p-2 shadow" [formGroup]="addressForm" (ngSubmit)="addAddress()">

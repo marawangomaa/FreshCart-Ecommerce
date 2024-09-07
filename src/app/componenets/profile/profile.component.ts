@@ -51,10 +51,27 @@ export class ProfileComponent implements OnInit {
   }
 
 
-  addAddress(){
+  addAddress():void{
     this._ProfileService.addAddress(this.addressForm.value).subscribe({
       next: (res)=>{
         console.log(res.data);
+        this.addressData = res.data;
+        
+      },
+      error: (err)=>{
+        console.log(err);
+        
+      }
+    })
+  }
+
+
+
+
+  removeAddress(id:string):void{
+    this._ProfileService.removedAddress(id).subscribe({
+      next: (res)=>{
+        console.log(res);
         this.addressData = res.data;
         
       },
