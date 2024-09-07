@@ -1,0 +1,48 @@
+@if (detailProduct) {
+    <section>
+        <div class="row align-items-center">
+            <h1 class="text-center text-main my-2">Details Product</h1>
+            <div class="col-md-3">
+                
+                <swiper-container class="mySwiper" pagination="true" effect="coverflow" grab-cursor="true" centered-slides="true"
+    slides-per-view="auto" coverflow-effect-rotate="50" coverflow-effect-stretch="0" coverflow-effect-depth="100"
+    coverflow-effect-modifier="1" coverflow-effect-slide-shadows="true">
+    @for (product of detailProduct.images; track $index) {
+        <swiper-slide>
+            <img [src]="product" class="w-100 rounded pro-img" [alt]="detailProduct.title">
+          </swiper-slide>
+    }
+    
+  </swiper-container>
+                
+                
+                
+            </div>
+            <div class="col-md-9">
+                <div>
+                    <h2>{{detailProduct.title}}</h2>
+                    <p class="text-muted">{{detailProduct.description}}</p>
+    
+                    <h3 class="h6">{{detailProduct.category.name}}</h3>
+    
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>{{detailProduct.price}} EGP</span>
+    
+                        <div>
+                            
+                            @for (num of [1,2,3,4,5].slice(0 , detailProduct.ratingsAverage) ; track $index) {
+                                <span> <i class="fas fa-star rating-color fs-6"></i> </span>
+                            }
+                            @if ( detailProduct.ratingsAverage%1 != 0 ) {
+                                <i class="fa-solid fa-star-half-stroke rating-color"></i>
+                            }
+    
+                            <span class="text-muted fs-6">{{detailProduct.ratingsAverage}}</span>
+                        </div>
+                    </div>
+                    <button class="btn-main w-100 mt-2">+Add To Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+}

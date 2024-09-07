@@ -1,0 +1,81 @@
+<section class="bg-main-light rounded-4 shadow my-4 w-75 mx-auto px-3 py-2">
+
+    <h1 class="text-main">Shipping Address</h1>
+
+    <form [formGroup]="orders" (ngSubmit)="orderSubmit()">
+        <div class="my-2">
+            <label for="details">Details :</label>
+            <textarea [ngClass]="{
+                'is-valid': !orders.get('details')?.errors && (orders.get('details')?.touched || orders.get('details')?.dirty),
+                'is-invalid': orders.get('details')?.errors && (orders.get('details')?.touched || orders.get('details')?.dirty)
+            }" formControlName="details" id="details" class="form-control"></textarea>
+
+
+            @if ((orders.get('details')?.touched || orders.get('details')?.dirty) && orders.get('details')?.errors) {
+                    <div class="alert alert-danger w-50">
+                        @if (orders.get('details')?.getError('required')) {
+                            <p class="m-0">Details Is Required</p>
+                        }
+                        @else if (orders.get('details')?.getError('minLength')) {
+                            <p class="m-0">Must Be More Than 10 Litters</p>
+                        }
+                        @else if (orders.get('details')?.getError('minLength')) {
+                            <p class="m-0">Must Be More Than 10 Litters</p>
+                        }
+                    </div>
+                }
+
+        </div>
+        <div class="my-2">
+            <label for="phone">Phone :</label>
+            <input [ngClass]="{
+                'is-valid': !orders.get('phone')?.errors && (orders.get('phone')?.touched || orders.get('phone')?.dirty),
+                'is-invalid': orders.get('phone')?.errors && (orders.get('phone')?.touched || orders.get('phone')?.dirty)
+            }" formControlName="phone" id="phone" class="form-control" type="tel">
+
+
+            @if ((orders.get('phone')?.touched || orders.get('phone')?.dirty) && orders.get('phone')?.errors) {
+                    <div class="alert alert-danger w-50">
+                        @if (orders.get('phone')?.getError('required')) {
+                            <p class="m-0">Phone Is Required</p>
+                        }
+                        @else if (orders.get('phone')?.getError('pattern')) {
+                            <p class="m-0">Invalid Phone</p>
+                        }
+                    </div>
+                }
+
+        </div>
+        <div class="my-2">
+            <label for="city">City :</label>
+            <input [ngClass]="{
+                'is-valid': !orders.get('city')?.errors && (orders.get('city')?.touched || orders.get('city')?.dirty),
+                'is-invalid': orders.get('city')?.errors && (orders.get('city')?.touched || orders.get('city')?.dirty)
+            }" formControlName="city" id="city" type="text" class="form-control">
+
+
+            @if ((orders.get('city')?.touched || orders.get('city')?.dirty) && orders.get('city')?.errors) {
+                    <div class="alert alert-danger w-50">
+                        @if (orders.get('city')?.getError('required')) {
+                            <p class="m-0">City Is Required</p>
+                        }
+                        @else if (orders.get('city')?.getError('pattern')) {
+                            <p class="m-0">Invalid City</p>
+                        }
+                    </div>
+                }
+
+        </div>
+        <button class="btn-main my-2" type="submit" >Check Out
+            @if (isLoading) {
+                <span class="fas fa-spin fa-spinner"></span>
+            }
+        </button>
+        @if (errMassage) {
+            <p class="alert alert-danger w-50 mt-2 m-0">{{errMassage}}</p>
+        }
+       
+    </form>
+
+
+</section>

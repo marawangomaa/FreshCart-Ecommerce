@@ -1,0 +1,15 @@
+<section>
+    <h2 class="text-main ">Category :</h2>
+    
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 justify-content-center">
+        @for (cat of catDetails ; track cat._id) {
+            <div class="col ng-star-inserted">
+                <div class="rounded-4 p-4 my-2 shadow card w-100">
+                    <img [src]="cat.image" height="280" class=" w-100" alt="">
+                    <h3 class="text-main text-center">{{cat.name}}</h3>
+            
+                </div>
+            </div>
+        }
+    </div>
+</section>

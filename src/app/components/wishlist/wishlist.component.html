@@ -1,0 +1,31 @@
+
+<section>
+
+    <h1 class="fw-bolder text-main">MY CART :</h1>
+   
+    @for (item of wishListDetails ; track item.id) {
+        <div class="my-2">
+            <div class="bg-main-light rounded-4 p-4 shadow d-flex">
+                <div class="me-2">
+                    <img [src]="item.imageCover" class="cart-img w-100 rounded" [alt]="item.title">
+                </div>
+
+                <div class="ms-2 d-flex flex-column justify-content-between">
+                    <h3>{{item.title}}</h3>
+                    <span class="my-3 text-muted">Price : {{item.price | currency : 'GBP'}}</span>
+                    
+                    <button (click)="removeProductToWishList(item.id)" class="btn btn-danger">
+                        <i class="fa-solid fa-trash-can"></i>
+                        Remove
+                    </button>
+                      
+                </div>
+
+            </div>
+        </div>
+    }
+
+   
+    
+
+</section>

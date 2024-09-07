@@ -1,0 +1,38 @@
+<section>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-info-subtle">Name :</th>
+                <th class="bg-info-subtle">Details :</th>
+                <th class="bg-info-subtle">Phone :</th>
+                <th class="bg-info-subtle">City :</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (address of addressData; track address._id) {
+                <tr>
+                    <td>{{address.name}}</td>
+                    <td>{{address.details}}</td>
+                    <td>{{address.phone}}</td>
+                    <td>{{address.city}}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <form class="bg-main-light p-2 shadow" [formGroup]="addressForm" (ngSubmit)="addAddress()">
+            <div class="d-flex flex-row my-2">
+                <input formControlName="name" type="text" placeholder="Name" class="form-control" >
+        
+                <input formControlName="details" type="text" placeholder="details" class="form-control" >
+        
+                <input formControlName="phone" type="tel" placeholder="Phone" class="form-control" >
+        
+                <input formControlName="city" type="text" placeholder="City" class="form-control" >
+        
+            </div>
+
+            <button type="submit" class="btn-main">Submit</button>
+    </form>
+</section>

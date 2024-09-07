@@ -1,0 +1,50 @@
+<div [class.d-none]="cartDetails.products.length>0" class="text-center start-0 end-0  position-fixed z-n1">
+    <i class="fs-1 fa-regular fa-face-angry"></i>
+    <p>NO PRODUCTS GO BACK AND GET ONE MR-LAZY </p>
+</div>
+
+<section [class.d-none]="cartDetails.products.length==0">
+
+
+    <div class="d-flex justify-content-between">
+
+            <h1 class="fw-bolder text-main">MY CART :</h1>
+            <button (click)="clearItems()" class="btn btn-outline-danger my-auto"> Clear Cart</button>
+            
+    </div>
+    <p class="text-main">Total Cart Proce : {{cartDetails.totalCartPrice | currency : 'GBP'}} </p> 
+
+
+    @for (item of cartDetails.products ; track item.product.id) {
+        <div class="my-2">
+            <div class="bg-main-light rounded-4 p-4 shadow d-flex">
+                <div class="me-2">
+                    <img [src]="item.product.imageCover" class="cart-img w-100 rounded" [alt]="item.product.title">
+                </div>
+
+                <div class="ms-2 d-flex flex-column justify-content-between">
+                    <h3>{{item.product.title}}</h3>
+                    <span class="my-3 text-muted">Price : {{item.price | currency : 'GBP'}}</span>
+                    
+                    <div class="my-4">
+                        <button (click)="updateCount( item.product.id , item.count + 1 )" class="btn fs-1 border-bottom border-end">+</button>
+                        <span class="mx-2">{{item.count}}</span>
+                        <button (click)="updateCount( item.product.id , item.count - 1 )" class="btn fs-1 border-bottom border-end">-</button>
+                    </div>
+
+                    <button (click)="removeItem(item.product.id)" class="btn btn-danger">
+                        <i class="fa-solid fa-trash-can"></i>
+                        Remove
+                    </button>
+                      
+                </div>
+
+            </div>
+        </div>
+    }
+
+   
+    <button [routerLink]="['/orders' , cartDetails._id]" class="btn-main">Orders</button>
+    
+
+</section>
