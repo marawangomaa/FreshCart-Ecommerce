@@ -6,6 +6,7 @@ import { WishlistService } from '../../core/services/wishlist.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { IWishlist } from '../../core/interfaces/iwishlist';
+import { CartService } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -18,6 +19,7 @@ export class WishlistComponent implements OnInit , OnDestroy {
 
   private readonly _WishlistService= inject(WishlistService)
   private readonly _ToastrService= inject(ToastrService)
+  private readonly _CartService= inject(CartService)
 
 
   wishListDetails: IWishlist[] = [];
@@ -31,6 +33,7 @@ export class WishlistComponent implements OnInit , OnDestroy {
         console.log(res.data);
         this.wishListDetails = res.data;
         
+        
       },
       error: (err)=>{
         console.log(err);
@@ -40,12 +43,32 @@ export class WishlistComponent implements OnInit , OnDestroy {
   }
 
 
+  addToCart(id:string){
+    this._CartService.addProductToCart(id).subscribe({
+      next: (res)=>{
+        console.log(res);
+        this._ToastrService.success(res.message , 'FreshCart')
+      }
+    })
+  }
+
   removeProductToWishList(id:string): void{
     this._WishlistService.removeProductFromWishList(id).subscribe({
       next: (res)=>{
         console.log(res);
         this._ToastrService.error(res.message, 'Product Removed')
-        this.wishListDetails = res.data;
+        this._WishlistService.getProductsWishList().subscribe({
+          next: (res)=>{
+            console.log(res.data);
+            this.wishListDetails = res.data;
+            
+            
+          },
+          error: (err)=>{
+            console.log(err);
+            
+          }
+        })
       },
       error: (err)=>{
         console.log(err);

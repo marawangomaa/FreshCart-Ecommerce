@@ -1,5 +1,11 @@
+<div [class.d-none]="wishListDetails.length>0" class="text-center start-0 end-0  position-fixed z-n1">
+    <i class="fs-1 fa-regular fa-face-smile"></i>
+    <p>NO PRODUCTS GO BACK AND GET ONE</p>
+</div>
 
-<section>
+
+
+<section [class.d-none]="wishListDetails.length==0">
 
     <h1 class="fw-bolder text-main">MY CART :</h1>
    
@@ -14,10 +20,16 @@
                     <h3>{{item.title}}</h3>
                     <span class="my-3 text-muted">Price : {{item.price | currency : 'GBP'}}</span>
                     
-                    <button (click)="removeProductToWishList(item.id)" class="btn btn-danger">
-                        <i class="fa-solid fa-trash-can"></i>
-                        Remove
-                    </button>
+                    <div class="d-flex">
+                        <button (click)="removeProductToWishList(item.id)" class="btn btn-danger me-2">
+                            <i class="fa-solid fa-trash-can"></i>
+                            Remove
+                        </button>
+                        <button (click)="addToCart(item.id)" class="btn-main">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            + Add To Cart
+                        </button>
+                    </div>
                       
                 </div>
 

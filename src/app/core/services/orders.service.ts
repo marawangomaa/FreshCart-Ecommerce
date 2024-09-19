@@ -15,9 +15,6 @@ export class OrdersService {
     return this._HttpClient.post(`${environment.baseUrl}/api/v1/orders/checkout-session/${idCart}?url=${environment.urlServer}` , 
       {
         "shippingAddress":shippingDetails
-      },
-      {
-        headers: this.myHeaders
       }
     )
   }

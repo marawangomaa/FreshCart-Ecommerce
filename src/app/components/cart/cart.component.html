@@ -32,10 +32,12 @@
                         <button (click)="updateCount( item.product.id , item.count - 1 )" class="btn fs-1 border-bottom border-end">-</button>
                     </div>
 
-                    <button (click)="removeItem(item.product.id)" class="btn btn-danger">
-                        <i class="fa-solid fa-trash-can"></i>
-                        Remove
-                    </button>
+                    <div>
+                        <button (click)="removeItem(item.product.id)" class="btn btn-danger">
+                            <i class="fa-solid fa-trash-can"></i>
+                            Remove
+                        </button>
+                    </div>
                       
                 </div>
 

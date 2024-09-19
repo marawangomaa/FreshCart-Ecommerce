@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { CartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { WishlistService } from '../../core/services/wishlist.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit , OnDestroy {
   private readonly _CartService= inject(CartService)
   private readonly _WishlistService= inject(WishlistService)
   private readonly _ToastrService= inject(ToastrService)
+  private readonly _NgxSpinnerService= inject(NgxSpinnerService)
 
   productsList:IProducts[] = [];
   categoriesList:ICategories[] = [];
@@ -41,6 +43,7 @@ export class HomeComponent implements OnInit , OnDestroy {
     loop: true,
     mouseDrag: true,
     touchDrag: true,
+    rtl: true,
     pullDrag: false,
     autoplay: true,
     autoplayTimeout: 3000,
@@ -55,6 +58,7 @@ export class HomeComponent implements OnInit , OnDestroy {
     loop: true,
     mouseDrag: true,
     touchDrag: true,
+    rtl: true,
     pullDrag: false,
     autoplay: true,
     autoplayTimeout: 3000,
@@ -83,15 +87,11 @@ export class HomeComponent implements OnInit , OnDestroy {
 
   getAllProductsSubscription !: Subscription
   ngOnInit(): void {
-    
+
     this._CategoriesService.getAllCategories().subscribe({
       next: (res)=>{
         console.log(res.data);
         this.categoriesList = res.data;
-        
-      },
-      error: (err)=>{
-        console.log(err);
         
       }
     })
@@ -101,10 +101,6 @@ export class HomeComponent implements OnInit , OnDestroy {
               console.log(res.data);
 
               this.productsList = res.data;
-              
-            },
-            error: (err)=>{
-              console.log(err);
               
             }
           })
@@ -122,10 +118,6 @@ export class HomeComponent implements OnInit , OnDestroy {
       next: (res)=>{
         console.log(res);
         this._ToastrService.success(res.message , 'FreshCart')
-      },
-      error: (err)=>{
-        console.log(err);
-        
       }
     })
   }
@@ -134,10 +126,6 @@ export class HomeComponent implements OnInit , OnDestroy {
       next: (res)=>{
         console.log(res);
         this._ToastrService.success(res.message , 'FreshCart')
-      },
-      error: (err)=>{
-        console.log(err);
-        
       }
     })
   }

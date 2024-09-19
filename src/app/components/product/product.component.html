@@ -3,7 +3,7 @@
 
     <input [(ngModel)]="text" type="search" placeholder="Search By Name ......." class="w-50 form-control mx-auto my-3">
 
-    <div class="row g-3 my-5">
+    <div class="row g-4 my-5">
         
         @for (product of productsList | search : text ; track product.id) {
             <div class="col-md-3">
