@@ -15,11 +15,12 @@ import { CartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { WishlistService } from '../../core/services/wishlist.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarouselModule , RouterLink , FormsModule , SalePipe , TermtextPipe , SearchPipe , UpperCasePipe , LowerCasePipe , TitleCasePipe , CurrencyPipe],
+  imports: [TranslateModule , CarouselModule , RouterLink , FormsModule , SalePipe , TermtextPipe , SearchPipe , UpperCasePipe , LowerCasePipe , TitleCasePipe , CurrencyPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -32,6 +33,7 @@ export class HomeComponent implements OnInit , OnDestroy {
   private readonly _WishlistService= inject(WishlistService)
   private readonly _ToastrService= inject(ToastrService)
   private readonly _NgxSpinnerService= inject(NgxSpinnerService)
+  private readonly _TranslateService= inject(TranslateService)
 
   productsList:IProducts[] = [];
   categoriesList:ICategories[] = [];
@@ -118,6 +120,7 @@ export class HomeComponent implements OnInit , OnDestroy {
       next: (res)=>{
         console.log(res);
         this._ToastrService.success(res.message , 'FreshCart')
+        this._CartService.cartNumber.next( res.numOfCartItems )
       }
     })
   }

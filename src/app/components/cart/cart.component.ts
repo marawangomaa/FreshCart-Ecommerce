@@ -46,6 +46,7 @@ export class CartComponent implements OnInit   {
         console.log(res);
         this._ToastrService.error('Item deleted successfully')
         this.cartDetails = res.data
+        this._CartService.cartNumber.next(res.numOfCartItems)
 
       },
       error: (err)=>{
@@ -76,8 +77,9 @@ export class CartComponent implements OnInit   {
       next: (res)=>{
         console.log(res);
         if( res.message  == "success" ){
-          this._ToastrService.error('Cart successfully cleared')
           this.cartDetails = {} as ICart;
+          this._CartService.cartNumber.next(0)
+          this._ToastrService.error('Cart successfully cleared')
         }
       },
       error: (err)=>{

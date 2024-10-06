@@ -12,6 +12,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -26,7 +27,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch() , withInterceptors([headersInterceptor , errorsInterceptor , loadingInterceptor])),
     provideAnimations(),
     provideToastr(),
-    importProvidersFrom( NgxSpinnerModule , 
+    importProvidersFrom( NgxPaginationModule , NgxSpinnerModule , 
       TranslateModule.forRoot({
         defaultLanguage: 'en',
         loader: {

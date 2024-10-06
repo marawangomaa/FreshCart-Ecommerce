@@ -1,11 +1,11 @@
 <section>
-    <h2 class="text-main border-top border-bottom py-2">All Products : </h2>
+    <h2 class="text-main border-top border-bottom py-2"> {{"All Products" | translate}} : </h2>
 
     <input [(ngModel)]="text" type="search" placeholder="Search By Name ......." class="w-50 form-control mx-auto my-3">
 
     <div class="row g-4 my-5">
         
-        @for (product of productsList | search : text ; track product.id) {
+        @for (product of productsList | search : text | paginate:{itemsPerPage:pageSize , currentPage:currentPage} ; track product.id) {
             <div class="col-md-3">
                 <div class="product bg-body p-2 cursor-pointer">
                     <span class="text-main btn wish w-100 fs-2 position-absolute top-0 z-3" (click)="addToWishList(product.id)"><i class="fa-regular fa-heart"></i></span>
@@ -39,3 +39,5 @@
 
     </div>
 </section>
+
+<pagination-controls (pageChange)="currentPage=$event"></pagination-controls>

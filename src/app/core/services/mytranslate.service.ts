@@ -15,15 +15,9 @@ export class MytranslateService {
 
     if(isPlatformBrowser(this._PLATFORM_ID)){
 
-      let savedLang = localStorage.getItem('lang')
-
       this._TranslateService.setDefaultLang('en')
 
-      if (savedLang !== null) {
-        this._TranslateService.use( savedLang ! )
-      }
-
-      this.changDirection()
+     this.setLang()
 
 
     }
@@ -32,8 +26,12 @@ export class MytranslateService {
   }
 
 
-  changDirection():void{
+  setLang():void{
     let savedLang = localStorage.getItem('lang')
+
+    if (savedLang !== null) {
+      this._TranslateService.use( savedLang ! )
+    }
 
     if (savedLang === 'en') {
       
@@ -56,7 +54,7 @@ export class MytranslateService {
 
       this._TranslateService.use(lang);
 
-      this.changDirection()
+      this.setLang()
 
 
     }

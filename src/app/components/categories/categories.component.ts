@@ -3,11 +3,12 @@ import { CategoriesService } from '../../core/services/categories.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ICategories } from '../../core/interfaces/icategories';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })

@@ -12,11 +12,13 @@ import { IProducts } from '../../core/interfaces/iproducts';
 import { Subscription } from 'rxjs';
 import { CartService } from '../../core/services/cart.service';
 import { WishlistService } from '../../core/services/wishlist.service';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CarouselModule , RouterLink , FormsModule , SalePipe , TermtextPipe , SearchPipe , UpperCasePipe , LowerCasePipe , TitleCasePipe , CurrencyPipe],
+  imports: [ TranslateModule , NgxPaginationModule , CarouselModule , RouterLink , FormsModule , SalePipe , TermtextPipe , SearchPipe , UpperCasePipe , LowerCasePipe , TitleCasePipe , CurrencyPipe],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
@@ -64,6 +66,7 @@ export class ProductComponent implements OnInit , OnDestroy {
       next: (res)=>{
         console.log(res);
         this._ToastrService.success(res.message , 'FreshCart')
+        this._CartService.cartNumber.next(res.numOfCartItems)
       },
       error: (err)=>{
         console.log(err);
@@ -84,5 +87,9 @@ export class ProductComponent implements OnInit , OnDestroy {
       }
     })
   }
+
+
+pageSize:number = 20 ;
+currentPage:number = 1 ;
 
 }

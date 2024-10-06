@@ -6,5 +6,18 @@
         "Brands":"Brands",
         "signOut":"signOut",
         "lang":"lang"
-    }
+    },
+    "home":{
+        "Popular Categories":"Popular Categories",
+        "Popular Products":"Popular Products"
+    },
+    "footer":{
+        "Get The FreshCart App":"Get The FreshCart App",
+        "We Will Send You a Link, Open it on Your Phone to download the app":"We Will Send You a Link, Open it on Your Phone to download the app",
+        "Payment partners":"Payment partners",
+        "Get Deliveries with FreshCart":"Get Deliveries with FreshCart"
+    },
+    "All Products":"All Products",
+    "All Category":"All Category",
+    "All Brands":"All Brands"
 }

@@ -1,3 +1,4 @@
+import { Token } from './../../core/interfaces/token';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Component, inject, OnInit } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
@@ -30,11 +31,12 @@ export class ProfileComponent implements OnInit {
 
   addressData: IAddress [] = [];
 
+  Token: Token = {} as Token
 
   ngOnInit(){
     this._AuthService.saveUserData()
-    const token = this._AuthService.userData
-    console.log(token);
+    this.Token = this._AuthService.userData
+    console.log(this.Token);
 
     this._ProfileService.getUserAddress().subscribe({
       next: (res)=>{

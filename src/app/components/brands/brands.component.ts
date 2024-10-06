@@ -10,11 +10,12 @@ import { RouterLink } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { IBrand } from '../../core/interfaces/ibrand';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-brands',
   standalone: true,
-  imports: [CommonModule , NgxPaginationModule , CarouselModule , RouterLink , FormsModule , SalePipe , TermtextPipe , SearchPipe , UpperCasePipe , LowerCasePipe , TitleCasePipe , CurrencyPipe],
+  imports: [ TranslateModule , CommonModule , NgxPaginationModule , CarouselModule , RouterLink , FormsModule , SalePipe , TermtextPipe , SearchPipe , UpperCasePipe , LowerCasePipe , TitleCasePipe , CurrencyPipe],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.scss'
 })
@@ -52,5 +53,14 @@ ngOnDestroy(): void{
 trackByFn(index: number, item: any): number {
   return index;  // Track by the index or use a unique property of `brand`
 }
+
+
+
+
+
+pageSize = 20 ;
+currentPage = 1 ;
+
+
 
 }

@@ -47,8 +47,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link position-relative ms-1" routerLinkActive="active-link" routerLink="cart">
-              <i class="fs-3 fa-solid fa-cart-shopping"></i></a>
+            <a class="nav-link position-relative" routerLinkActive="active-link" routerLink="cart">
+              <i class="fs-3 fa-solid fa-cart-shopping"></i>
+              <span class="badge bg-info position-absolute top-0 cart-num"> {{countNumber}} </span>
+            </a>
           </li>
 
             <li class="nav-item">

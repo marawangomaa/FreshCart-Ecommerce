@@ -6,5 +6,18 @@
         "Brands":"العلامات التجاريه",
         "signOut":"تسجيل الخروج",
         "lang":"غ"
-    }
+    },
+    "home":{
+        "Popular Categories":"الاقسام الرائجه",
+        "Popular Products":"المنتجات الرائجه"
+    },
+    "footer":{
+        "Get The FreshCart App":"احصل على تطبيق المتجر",
+        "We Will Send You a Link, Open it on Your Phone to download the app":"ثوف نرسل لك رساله على الهاتف لتحميل التطبيق",
+        "Payment partners":"شركاء الدفع",
+        "Get Deliveries with FreshCart":"احصل على عمليات التسليم مع FreshCart"
+    },
+    "All Products":"كل المنتجات",
+    "All Category":"كل الاقسام",
+    "All Brands":"كل العلامات التجاريه"
 }
